@@ -31,8 +31,8 @@ app.use(limiter) // stocker dans une variable pour pouvoire la réutiliser
 app.use(express.json({ limit: '10kb' })) // Lit les fetch ou Axios, içi bloque les JSON de plus de 10kb
 app.use(express.urlencoded({ extended: true })) // Lit les form html, extended permet de lire objets nested
 
-// Endpoint health pour regarder si l'API est vivant
-app.get('/health', (req, res) => res.status(200).send('OK'))
+// Endpoint health pour regarder si l'API est vivant (besoin de le mettre en fichier a part pour vercel)
+// app.get('/health', (req, res) => res.status(200).send('OK'))
 
 // Importe les routes
 app.use('/api', require('./routes'))
