@@ -32,7 +32,7 @@ app.use(express.json({ limit: '10kb' })) // Lit les fetch ou Axios, içi bloque 
 app.use(express.urlencoded({ extended: true })) // Lit les form html, extended permet de lire objets nested
 
 // Endpoint health pour regarder si l'API est vivant (besoin de le mettre en fichier a part pour vercel)
-// app.get('/health', (req, res) => res.status(200).send('OK'))
+app.get('/health', (req, res) => res.status(200).send('OK'))
 
 // Importe les routes
 app.use('/', require('./routes/pageStatsRoutes'))
