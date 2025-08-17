@@ -35,7 +35,7 @@ app.use(express.urlencoded({ extended: true })) // Lit les form html, extended p
 // app.get('/health', (req, res) => res.status(200).send('OK'))
 
 // Importe les routes
-app.use('/', require('./routes'))
+app.use('/', require('./routes/pageStatsRoutes'))
 
 // Error handling
 app.use((err, req, res, next) => {
