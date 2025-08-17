@@ -1,4 +1,4 @@
-const pageService = require('../../services/pageStatsService');
+const pageService = require('../services/pageStatsService');
 const express = require("express");
 const router = express.Router();
 const { urlValidation, timeValidation } = require('../middleware/validationMiddleware');
@@ -15,9 +15,10 @@ router.post('/', [urlValidation(), timeValidation()], async (req, res) => {
             return res.status(400).json({ errors: errors.array() });
         }
 
+        const { time, url } = req.body;
+
         const existingPage = await pageService.checkPage(url);
         if (existingPage) {
-            const { time, url } = req.body;
             await pageService.updatePage(time, url);
             return res.status(200).json({ action: 'updated' });
         }
@@ -77,3 +78,5 @@ router.delete('/delete', urlValidation(), async (req, res) => {
         res.status(500).json({ error: "Server error" });
     }
 })
+
+module.exports = router;
