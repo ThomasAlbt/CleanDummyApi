@@ -11,21 +11,21 @@
   ],
   "routes": [
     {
+      "src": "/health",
+      "dest": "/api/index.js"
+    },
+    {
       "src": "/api/(.*)",
       "dest": "/api/$1",
       "headers": {
-        "Access-Control-Allow-Origin": "https://your-frontend.com",
-        "Access-Control-Allow-Methods": "GET,POST,DELETE"
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,POST,DELETE,OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type"
       }
     },
     {
-      "src": "/health",
-      "dest": "/api/health.js"
-    },
-    {
       "src": "/(.*)",
-      "status": 404,
-      "dest": "/api/404"
+      "dest": "/api/index.js"
     }
   ],
   "env": {
