@@ -1,4 +1,4 @@
-const pageService = require('../../services/pageStatsService');
+const pageService = require('../services/pageStatsService');
 const express = require("express");
 const router = express.Router();
 const { urlValidation, timeValidation } = require('../middleware/validationMiddleware');
